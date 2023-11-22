@@ -1,6 +1,5 @@
 void main(){
  forLoopSample();
-
 }
 
 void forLoopSample(){
@@ -10,5 +9,4 @@ void forLoopSample(){
 }
 
 void arraySample(){
-
 }

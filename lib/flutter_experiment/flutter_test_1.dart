@@ -4,15 +4,14 @@ void main() {
   runApp(
     const MaterialApp(
       home: Scaffold(
-        body: MyApp()
+        body: MyScaffold()
       ),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class MyScaffold extends StatelessWidget {
+  const MyScaffold({super.key});
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(onPressed: (){
