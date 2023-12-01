@@ -9,20 +9,13 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
-  var _productName;
   final _productController = TextEditingController();
 
 
   @override
-  void initState() {
-    super.initState();
-    _productController.addListener(_updateText);
-  }
-
-  void _updateText(){
-    setState(() {
-      _productName = _productController.text;
-    });
+  void dispose() {
+    _productController.dispose();
+    super.dispose();
   }
 
   @override
@@ -45,7 +38,8 @@ class _MyFormState extends State<MyForm> {
               border: OutlineInputBorder()
             ),
           ),
-          Text('Product Name is ${_productController.text}')
+          const SizedBox(height: 20.0),
+          myBtn(context),
         ],
       )
     );
@@ -58,7 +52,7 @@ class _MyFormState extends State<MyForm> {
           Navigator.push(
               context,
               MaterialPageRoute(builder: (context){
-                return const Details();
+                return Details(productName: _productController.text,);
           })
           );
         },
