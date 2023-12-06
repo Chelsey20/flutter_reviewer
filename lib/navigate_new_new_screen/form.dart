@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reviewer/custom_widgets/my_radio_button.dart';
 import 'details.dart';
 
 class MyForm extends StatefulWidget {
@@ -14,6 +15,7 @@ class _MyFormState extends State<MyForm> {
   final _productController2 = TextEditingController();
 
   bool? _checkBox, _listTileCheckBox = false;
+  ProductTypeEnum? _productTypeEnum;
 
   @override
   void dispose() {
@@ -74,26 +76,53 @@ class _MyFormState extends State<MyForm> {
               ),
               const SizedBox(height: 10.0),
 
-              Checkbox(
-                  checkColor: Colors.white,
-                  activeColor: Colors.deepPurple,
-                  tristate: true,
-                  value: _checkBox,
-                  onChanged: (val) {
-                    setState(() {
-                      _checkBox = val;
-                    });
-                  }),
+              // Checkbox(
+              //     checkColor: Colors.white,
+              //     activeColor: Colors.deepPurple,
+              //     tristate: true,
+              //     value: _checkBox,
+              //     onChanged: (val) {
+              //       setState(() {
+              //         _checkBox = val;
+              //       });
+              //     }),
 
               CheckboxListTile(
-                  value: _listTileCheckBox,
-                  title: const Text("Top Product"),
-                  onChanged: (val) {
-                    setState(() {
-                      _listTileCheckBox = val;
-                    });
-                  },
-                  controlAffinity: ListTileControlAffinity.leading,
+                value: _listTileCheckBox,
+                title: const Text("Top Product"),
+                onChanged: (val) {
+                  setState(() {
+                    _listTileCheckBox = val;
+                  });
+                },
+                controlAffinity: ListTileControlAffinity.leading,
+              ),
+
+
+              Row(
+                children: [
+                  MyRadioButton(
+                      title: ProductTypeEnum.Deliverable.name,
+                      value: ProductTypeEnum.Deliverable,
+                      selectedProductType: _productTypeEnum,
+                      onChanged:(val){
+                        setState(() {
+                          _productTypeEnum = val;
+                        });
+                      }
+                  ),
+                  const SizedBox(width: 5.0),
+                  MyRadioButton(
+                      title: ProductTypeEnum.Downloadable.name,
+                      value: ProductTypeEnum.Downloadable,
+                      selectedProductType: _productTypeEnum,
+                      onChanged:(val){
+                        setState(() {
+                          _productTypeEnum = val;
+                        });
+                      }
+                  ),
+                ],
               ),
               const SizedBox(height: 20.0),
               myBtn(context),
@@ -122,29 +151,23 @@ class _MyFormState extends State<MyForm> {
 }
 
 class MyTextField extends StatelessWidget {
-  const MyTextField({
-    super.key,
+  MyTextField({super.key,
     required this.fieldName,
     required this.myController,
     this.myIcon = Icons.verified_user_outlined,
     this.prefixIconColor = Colors.blueAccent,
   });
-
   final TextEditingController myController;
-  final String fieldName;
+  String fieldName;
   final IconData myIcon;
-  final Color prefixIconColor;
-
+  Color prefixIconColor;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: myController,
       decoration: InputDecoration(
           labelText: fieldName,
-          prefixIcon: Icon(
-            myIcon,
-            color: prefixIconColor,
-          ),
+          prefixIcon: Icon(myIcon, color: prefixIconColor),
           border: const OutlineInputBorder(),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.deepPurple.shade300),
