@@ -42,7 +42,7 @@ class _InstagramBottomNavigationState extends State<InstagramBottomNavigation> {
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.account_balance_rounded),
               label: ''),
           BottomNavigationBarItem(

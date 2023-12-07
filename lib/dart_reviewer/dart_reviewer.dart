@@ -10,3 +10,9 @@ void forLoopSample(){
 
 void arraySample(){
 }
+
+class ChuckNorrisModel {
+  String? created_at;
+  String? value;
+
+}
