@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_reviewer/post_api/models/posts.dart';
 import 'package:flutter_reviewer/post_api/services/remote_services.dart';
 
+import '../models/pokemon1.dart';
+
+
 void main() {
   runApp(const MaterialApp(home: HomePage()));
 }
@@ -15,6 +18,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Posts>? posts;
+  List<Result>? results;
+
+
   var isLoaded = false;
 
   @override
@@ -22,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     getData();
+    getPokemon1();
   }
 
   getData() async {
@@ -32,6 +39,17 @@ class _HomePageState extends State<HomePage> {
       });
     }
   }
+
+  getPokemon1() async {
+    results = (await RemoteService().getPokemon1())?.results;
+    if (results != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +76,9 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.grey[300],
                     ),
+                    child: Image.network(
+                      'https://th.bing.com/th/id/OIP.z0DPSJzRnUnu9tpwnDgF2AHaHa?rs=1&pid=ImgDetMain',
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -65,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          posts![index].title,
+                          results![index].name,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
@@ -74,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Text(
-                          posts![index].body ?? '',
+                          results![index].url ?? '',
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),
