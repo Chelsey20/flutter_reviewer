@@ -55,7 +55,7 @@ class _ChuckNorrisApiState extends State<ChuckNorrisApi> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20.0,
         ),
         ElevatedButton(
@@ -68,6 +68,22 @@ class _ChuckNorrisApiState extends State<ChuckNorrisApi> {
           },
           child: const Text(
             'Get Animal Jokes',
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all(const Color.fromRGBO(241, 90, 36, 1)),
+          ),
+          onPressed: () {
+            getData('https://api.chucknorris.io/jokes/random?category=history');
+          },
+          child: const Text(
+            'Get History Jokes',
             style: TextStyle(
               fontSize: 20,
             ),

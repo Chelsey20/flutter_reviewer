@@ -30,7 +30,7 @@ class RemoteService
     return null;
   }
 
-  Future<ChuckNorris?> getChuckNorrisJoke( uriv) async{
+  Future<ChuckNorris?> getChuckNorrisJoke(uriv) async{
     var client = http.Client();
 
     var uri = Uri.parse(uriv);
