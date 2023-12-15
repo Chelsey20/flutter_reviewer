@@ -1,4 +1,5 @@
 import '../models/chuck_norris_model.dart';
+import '../models/pokedex_model.dart';
 import '../models/pokemon1.dart';
 import '../models/posts.dart';
 import 'package:http/http.dart' as http;
@@ -42,6 +43,17 @@ class RemoteService
     return null;
   }
 
+  Future<PokedexJson?> getPokeDex(url) async{
+    var client = http.Client();
+
+    var uri = Uri.parse(url);
+    var response = await client.get(uri);
+    if(response.statusCode == 200){
+      var json = response.body;
+      return pokedexJsonFromJson(json);
+    }
+    return null;
+  }
 
 }
 
