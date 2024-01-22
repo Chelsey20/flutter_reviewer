@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
-      home: MyPetFeederApp(),
-    ),
-  );
+  runApp(MaterialApp(home: MyPetFeederApp()));
 }
 
 class MyPetFeederApp extends StatefulWidget {
@@ -19,11 +15,11 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        body: AppBar(
         centerTitle: false,
-        title: CircleAvatar(
-          backgroundImage: NetworkImage(
-              'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT9XT89rHOJLr7fOg3wSlQLss0SVKd11QLerGhgXq2ZBB2IGGN1'),
+        title: const CircleAvatar(
+        backgroundImage: NetworkImage(
+        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT9XT89rHOJLr7fOg3wSlQLss0SVKd11QLerGhgXq2ZBB2IGGN1'),
         ),
         actions: <Widget>[
           IconButton(
@@ -31,20 +27,7 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
             icon: Icon(Icons.add_circle, color: Colors.orange,),
           )
         ],
-      ),
-      body: Column(
-        children: [
-          SizedBox(height: 20.0,),
-          Text('All Devices'),
-          Container(child:
-          Row(
-            children: [
-              ListTile(title: Text("ROJECO Pet Feeder"),),
-            ],
-          )
-            ,)
-        ],
-      ),
+        ),
     );
   }
 }
