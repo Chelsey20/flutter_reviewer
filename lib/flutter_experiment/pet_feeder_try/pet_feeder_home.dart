@@ -15,7 +15,7 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AppBar(
+        appBar: AppBar(
         centerTitle: false,
         title: const CircleAvatar(
         backgroundImage: NetworkImage(
@@ -24,10 +24,24 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
         actions: <Widget>[
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.add_circle, color: Colors.orange,),
+            icon: const Icon(Icons.add_circle, color: Colors.orange, size: 30.0,),
           )
         ],
         ),
+      body: Column(
+        children: [
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text('All Devices', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("..."),
+            ],
+          ),
+          Container(
+            
+          )
+        ],
+      )
     );
   }
 }
