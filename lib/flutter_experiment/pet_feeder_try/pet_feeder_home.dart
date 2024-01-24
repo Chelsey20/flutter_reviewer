@@ -44,12 +44,49 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
       ),
       body: Column(
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('All Devices',
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              Text("..."),
+              Container(
+                margin: EdgeInsets.only(right: 10.0, left: 10.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      'All Devices',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    MenuAnchor(
+                      builder: (BuildContext context, MenuController controller,
+                          Widget? child) {
+                        return IconButton(
+                          onPressed: () {
+                            if (controller.isOpen) {
+                              controller.close();
+                            } else {
+                              controller.open();
+                            }
+                          },
+                          icon: Icon(Icons.more_horiz),
+                        );
+                      },
+                      menuChildren: const [
+                        ListTile(
+                          leading: Icon(Icons.grid_view),
+                          title: Text('Grid View'),
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.settings),
+                          title: Text('Room Management'),
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.settings),
+                          title: Text('Device Management'),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
           Container(
@@ -81,12 +118,12 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
               icon: Icon(
                 Icons.check_box,
               ),
-              label: 'Scene,'),
+              label: 'Scene'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
               ),
-              label: 'Me,'),
+              label: 'Me'),
         ],
       ),
     );
