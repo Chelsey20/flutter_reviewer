@@ -21,6 +21,8 @@ class MyPetFeederApp extends StatefulWidget {
 }
 
 class _MyPetFeederAppState extends State<MyPetFeederApp> {
+  int myIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,50 +46,46 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                margin: EdgeInsets.only(right: 10.0, left: 10.0),
-                child: Row(
-                  children: [
-                    const Text(
-                      'All Devices',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    MenuAnchor(
-                      builder: (BuildContext context, MenuController controller,
-                          Widget? child) {
-                        return IconButton(
-                          onPressed: () {
-                            if (controller.isOpen) {
-                              controller.close();
-                            } else {
-                              controller.open();
-                            }
-                          },
-                          icon: Icon(Icons.more_horiz),
-                        );
+          Container(
+            margin: EdgeInsets.only(left: 20.0, right: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'All Devices',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                MenuAnchor(
+                  builder: (BuildContext context, MenuController controller,
+                      Widget? child) {
+                    return IconButton(
+                      onPressed: () {
+                        if (controller.isOpen) {
+                          controller.close();
+                        } else {
+                          controller.open();
+                        }
                       },
-                      menuChildren: const [
-                        ListTile(
-                          leading: Icon(Icons.grid_view),
-                          title: Text('Grid View'),
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('Room Management'),
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('Device Management'),
-                        )
-                      ],
+                      icon: Icon(Icons.more_horiz),
+                    );
+                  },
+                  menuChildren: const [
+                    ListTile(
+                      leading: Icon(Icons.grid_view),
+                      title: Text('Grid View'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.settings),
+                      title: Text('Room Management'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.settings),
+                      title: Text('Device Management'),
                     )
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Container(
             margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
@@ -108,6 +106,12 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          setState(() {
+            myIndex = index;
+          });
+        },
+        currentIndex: myIndex,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(
