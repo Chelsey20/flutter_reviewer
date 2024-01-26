@@ -47,7 +47,7 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(left: 20.0, right: 20.0),
+            margin: EdgeInsets.only(left: 30.0, right: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -88,7 +88,8 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0),
+            margin: const EdgeInsets.only(left: 25.0, right: 30.0, top: 25.0),
+            padding: const EdgeInsets.all(25.0),
             width: 500.0,
             height: 120.0,
             decoration: BoxDecoration(
@@ -102,6 +103,22 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
                     offset: Offset(6, 5),
                   )
                 ]),
+            child: const Row(
+              children: [
+                Image(
+                  image: AssetImage('lib/assets/rojeco_single_pet_feeder.png'),
+                ),
+                SizedBox(
+                  width: 5.0,
+                ),
+                Center(
+                  child: Text(
+                    'ROJECO Pet Feeder',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -112,6 +129,7 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
           });
         },
         currentIndex: myIndex,
+        selectedItemColor: Colors.orange,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(

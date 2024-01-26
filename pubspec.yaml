@@ -64,6 +64,7 @@ flutter:
   assets:
     - lib/assets/satoru.jpeg
     - lib/post_api/models/posts.dart
+    - lib/assets/rojeco_single_pet_feeder.png
 #     - images/a_dot_burr.jpeg
 #     - images/a_dot_ham.jpeg
 
