@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/petFeedingScreen.dart';
 
 void main() {
   runApp(
@@ -87,37 +88,44 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
               ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(left: 25.0, right: 30.0, top: 25.0),
-            padding: const EdgeInsets.all(25.0),
-            width: 500.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    spreadRadius: 5.0,
-                    blurRadius: 10,
-                    offset: Offset(6, 5),
-                  )
-                ]),
-            child: const Row(
-              children: [
-                Image(
-                  image: AssetImage('lib/assets/rojeco_single_pet_feeder.png'),
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Center(
-                  child: Text(
-                    'ROJECO Pet Feeder',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => PetFeedingScreen()));
+            },
+            child: Container(
+              margin: const EdgeInsets.only(left: 25.0, right: 30.0, top: 25.0),
+              padding: const EdgeInsets.all(25.0),
+              width: 500.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      spreadRadius: 5.0,
+                      blurRadius: 10,
+                      offset: Offset(6, 5),
+                    )
+                  ]),
+              child: const Row(
+                children: [
+                  Image(
+                    image:
+                        AssetImage('lib/assets/rojeco_single_pet_feeder.png'),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Center(
+                    child: Text(
+                      'ROJECO Pet Feeder',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],
