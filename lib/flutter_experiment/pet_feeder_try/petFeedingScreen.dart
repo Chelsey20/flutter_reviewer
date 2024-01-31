@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'meal_plan_screen.dart';
+
 class PetFeedingScreen extends StatefulWidget {
   const PetFeedingScreen({super.key});
 
@@ -8,6 +10,7 @@ class PetFeedingScreen extends StatefulWidget {
 }
 
 class _PetFeedingScreenState extends State<PetFeedingScreen> {
+  final int portionNumber = 60;
   //functions
   Widget header() {
     return Row(
@@ -35,23 +38,61 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
     );
   }
 
+  Widget taskList() {
+    return Column(
+      children: [
+        GestureDetector(
+          child: const ListTile(
+            leading: Icon(Icons.timelapse_sharp),
+            title: Text('Meal Plan'),
+            trailing: Icon(Icons.arrow_forward_ios_outlined),
+          ),
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => MealPlanScreen()));
+          },
+        ),
+        const ListTile(
+          leading: Icon(Icons.note_alt_outlined),
+          title: Text('Feed Record'),
+          trailing: Icon(Icons.arrow_forward_ios_outlined),
+        )
+      ],
+    );
+  }
+
+  Widget portion() {
+    return SingleChildScrollView(
+      child: Row(
+        children: List.generate(
+          portionNumber,
+          (index) => ListTile(
+            title: Text(
+              '$index+1',
+              style: const TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Container(
-            height: 770.0,
+            height: 600.0,
             decoration: const BoxDecoration(
               color: Colors.orange,
             ),
             child: Column(
               children: [
                 header(),
-                ListTile(
-                  leading: Icon(Icons.timelapse_sharp),
-                  title: Text('Meal Plan'),
-                  trailing: Icon(Icons.arrow),
-                )
+                taskList(),
+                portion(),
               ],
             )),
       ),
