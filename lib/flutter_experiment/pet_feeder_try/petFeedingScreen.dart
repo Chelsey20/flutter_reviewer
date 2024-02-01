@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'meal_plan_screen.dart';
 
 class PetFeedingScreen extends StatefulWidget {
@@ -62,11 +61,31 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
   }
 
   Widget portion() {
-    return SingleChildScrollView(
-      child: Row(
-        children: List.generate(
-          portionNumber,
-          (index) => ListTile(
+    return SizedBox(
+      // height: 200,
+      // width: 100,
+      width: double.infinity,
+      child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: portionNumber,
+          itemBuilder: (context, index) {
+            int num = index + 1;
+
+            return Text(
+              '$num  ',
+              style: const TextStyle(
+                color: Colors.black,
+              ),
+            );
+          }),
+    );
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(
+        portionNumber,
+        (index) => Flexible(
+          child: ListTile(
             title: Text(
               '$index+1',
               style: const TextStyle(
@@ -81,9 +100,10 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
             height: 600.0,
             decoration: const BoxDecoration(
               color: Colors.orange,
@@ -91,10 +111,13 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
             child: Column(
               children: [
                 header(),
+                const SizedBox(height: 10),
                 taskList(),
-                portion(),
               ],
-            )),
+            ),
+          ),
+          Expanded(child: portion()),
+        ],
       ),
     );
   }

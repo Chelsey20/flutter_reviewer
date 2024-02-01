@@ -6,7 +6,7 @@ void main() {
     // ignore: prefer_const_constructors
     MaterialApp(
       title: 'Rojeco App',
-      home: MyPetFeederApp(),
+      home: const MyPetFeederApp(),
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
@@ -48,7 +48,7 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(left: 30.0, right: 30.0),
+            margin: const EdgeInsets.only(left: 30.0, right: 30.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -67,7 +67,7 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
                           controller.open();
                         }
                       },
-                      icon: Icon(Icons.more_horiz),
+                      icon: const Icon(Icons.more_horiz),
                     );
                   },
                   menuChildren: const [
@@ -90,8 +90,8 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => PetFeedingScreen()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const PetFeedingScreen()));
             },
             child: Container(
               margin: const EdgeInsets.only(left: 25.0, right: 30.0, top: 25.0),
@@ -118,16 +118,14 @@ class _MyPetFeederAppState extends State<MyPetFeederApp> {
                   SizedBox(
                     width: 5.0,
                   ),
-                  Center(
-                    child: Text(
-                      'ROJECO Pet Feeder',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                  Text(
+                    'ROJECO Pet Feeder',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
