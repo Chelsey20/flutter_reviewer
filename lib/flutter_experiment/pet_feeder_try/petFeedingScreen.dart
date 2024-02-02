@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/feed_record_screen.dart';
 import 'meal_plan_screen.dart';
 
 class PetFeedingScreen extends StatefulWidget {
@@ -42,19 +43,45 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
       children: [
         GestureDetector(
           child: const ListTile(
-            leading: Icon(Icons.timelapse_sharp),
-            title: Text('Meal Plan'),
-            trailing: Icon(Icons.arrow_forward_ios_outlined),
+            leading: Icon(
+              Icons.timelapse_sharp,
+              color: Colors.white,
+            ),
+            title: Text(
+              'Meal Plan',
+              style: TextStyle(color: Colors.white),
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios_outlined,
+              color: Colors.white,
+            ),
           ),
           onTap: () {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => MealPlanScreen()));
           },
         ),
-        const ListTile(
-          leading: Icon(Icons.note_alt_outlined),
-          title: Text('Feed Record'),
-          trailing: Icon(Icons.arrow_forward_ios_outlined),
+        GestureDetector(
+          child: const ListTile(
+            leading: Icon(
+              Icons.note_alt_outlined,
+              color: Colors.white,
+            ),
+            title: Text(
+              'Feed Record',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios_outlined,
+              color: Colors.white,
+            ),
+          ),
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => FeedRecordScreen()));
+          },
         )
       ],
     );
@@ -62,9 +89,7 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
 
   Widget portion() {
     return SizedBox(
-      // height: 200,
-      // width: 100,
-      width: double.infinity,
+      width: MediaQuery.sizeOf(context).width,
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -72,52 +97,58 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
           itemBuilder: (context, index) {
             int num = index + 1;
 
-            return Text(
-              '$num  ',
-              style: const TextStyle(
-                color: Colors.black,
+            return Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: 50,
+                height: 50,
+                padding: const EdgeInsets.all(2.0),
+                margin: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 3.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Center(
+                  child: Text(
+                    '$num  ',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
               ),
             );
           }),
-    );
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: List.generate(
-        portionNumber,
-        (index) => Flexible(
-          child: ListTile(
-            title: Text(
-              '$index+1',
-              style: const TextStyle(
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 600.0,
-            decoration: const BoxDecoration(
-              color: Colors.orange,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 500.0,
+              decoration: const BoxDecoration(
+                color: Colors.orange,
+              ),
+              child: Column(
+                children: [
+                  header(),
+                  const SizedBox(height: 300),
+                  taskList(),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                header(),
-                const SizedBox(height: 10),
-                taskList(),
-              ],
-            ),
-          ),
-          Expanded(child: portion()),
-        ],
+            Flexible(child: portion()),
+          ],
+        ),
       ),
     );
   }

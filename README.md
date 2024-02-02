@@ -3,6 +3,7 @@
 A new Flutter project.
 
 ## Getting Started
+![Image of Turo Agham from ImgBB](https://i.ibb.co/P9H1qHZ/Screenshot-20190429-161807.jpg)
 
 This project is a starting point for a Flutter application.
 
