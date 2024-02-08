@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/feed_record_screen.dart';
-import 'meal_plan_screen.dart';
+import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/history.dart';
+import 'meal_plan.dart';
 
 class PetFeedingScreen extends StatefulWidget {
   const PetFeedingScreen({super.key});
@@ -107,22 +107,45 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,
-                    width: 3.0,
+                    width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Center(
                   child: Text(
-                    '$num  ',
+                    '$num',
                     style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.grey,
+                      fontSize: 20.0,
                     ),
                   ),
                 ),
               ),
             );
           }),
+    );
+  }
+
+  Widget middleCircle() {
+    return Container(
+      width: 150.0,
+      height: 150.0,
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Standby',
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      ),
     );
   }
 
@@ -141,7 +164,11 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
               child: Column(
                 children: [
                   header(),
-                  const SizedBox(height: 300),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  middleCircle(),
+                  const SizedBox(height: 100),
                   taskList(),
                 ],
               ),

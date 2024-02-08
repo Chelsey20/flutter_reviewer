@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/petFeedingScreen.dart';
+import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/feeder_main.dart';
 
 void main() {
   runApp(
