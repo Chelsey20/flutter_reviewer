@@ -156,24 +156,30 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
         body: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              height: 500.0,
-              decoration: const BoxDecoration(
-                color: Colors.orange,
-              ),
-              child: Column(
-                children: [
-                  header(),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  middleCircle(),
-                  const SizedBox(height: 100),
-                  taskList(),
-                ],
+            Flexible(
+              flex: 4,
+              child: Container(
+                height: 500.0,
+                decoration: const BoxDecoration(
+                  color: Colors.orange,
+                ),
+                child: Column(
+                  children: [
+                    header(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    middleCircle(),
+                    const SizedBox(height: 100),
+                    taskList(),
+                  ],
+                ),
               ),
             ),
-            Flexible(child: portion()),
+            Flexible(
+              flex: 2,
+              child: portion(),
+            ),
           ],
         ),
       ),
