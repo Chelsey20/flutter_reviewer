@@ -28,6 +28,7 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
+            fontSize: 16.0,
           ),
         ),
         const Icon(
@@ -41,47 +42,65 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
   Widget taskList() {
     return Column(
       children: [
-        GestureDetector(
-          child: const ListTile(
-            leading: Icon(
-              Icons.timelapse_sharp,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Meal Plan',
-              style: TextStyle(color: Colors.white),
-            ),
-            trailing: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Colors.white,
-            ),
-          ),
-          onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => MealPlanScreen()));
-          },
-        ),
-        GestureDetector(
-          child: const ListTile(
-            leading: Icon(
-              Icons.note_alt_outlined,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Feed Record',
-              style: TextStyle(
+        Padding(
+          padding: const EdgeInsets.only(left: 30.0, right: 13.0),
+          child: GestureDetector(
+            child: const ListTile(
+              leading: Icon(
+                Icons.timelapse_sharp,
                 color: Colors.white,
+                size: 25.0,
+              ),
+              title: Text(
+                'Meal Plan',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_outlined,
+                color: Colors.white,
+                size: 25.0,
               ),
             ),
-            trailing: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Colors.white,
-            ),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MealPlanScreen()));
+            },
           ),
-          onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => FeedRecordScreen()));
-          },
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+          child: Divider(thickness: 1.0, color: Colors.white),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 30.0, right: 10.0),
+          child: GestureDetector(
+            child: const ListTile(
+              leading: Icon(
+                Icons.note_alt_outlined,
+                color: Colors.white,
+                size: 25.0,
+              ),
+              title: Text(
+                'Feed Record',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                ),
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_outlined,
+                color: Colors.white,
+                size: 25.0,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => FeedRecordScreen()));
+            },
+          ),
         )
       ],
     );
@@ -132,22 +151,33 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
 
   Widget middleCircle() {
     return Container(
-      width: 150.0,
+      width: 250.0,
       height: 150.0,
       alignment: Alignment.center,
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.white,
       ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Standby',
-            style: TextStyle(color: Colors.grey),
-          ),
-        ],
+      child: Container(
+        width: 240.0,
+        height: 140.0,
+        //margin: EdgeInsets.all(1.0),
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              width: 2.0,
+              color: Colors.grey,
+            )),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Standby',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -196,6 +226,7 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
                 ),
               ),
             ),
+            SizedBox(height: 30.0),
             Flexible(child: portion()),
             const Text(
               'Portion',
