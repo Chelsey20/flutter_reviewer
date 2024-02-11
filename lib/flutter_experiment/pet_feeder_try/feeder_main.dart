@@ -88,42 +88,45 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
   }
 
   Widget portion() {
-    return SizedBox(
-      width: MediaQuery.sizeOf(context).width,
-      child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: portionNumber,
-          itemBuilder: (context, index) {
-            int num = index + 1;
+    return Container(
+      margin: EdgeInsets.only(left: 40.0, right: 40.0),
+      child: SizedBox(
+        width: MediaQuery.sizeOf(context).width,
+        child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: portionNumber,
+            itemBuilder: (context, index) {
+              int num = index + 1;
 
-            return Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 50,
-                height: 50,
-                padding: const EdgeInsets.all(2.0),
-                margin: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Center(
-                  child: Text(
-                    '$num',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
+              return Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  padding: const EdgeInsets.all(2.0),
+                  margin: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
                       color: Colors.grey,
-                      fontSize: 20.0,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '$num',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey,
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
     );
   }
 
