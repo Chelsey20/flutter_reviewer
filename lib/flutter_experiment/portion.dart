@@ -24,21 +24,26 @@ class _PortionState extends State<Portion> {
             itemBuilder: (context, index) {
               int num = index + 1;
 
-              return Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                  width: 50.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 2.0,
+              return Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Center(
-                    child: Text('$num'),
+                    child: Center(
+                      child: Text(
+                        '$num',
+                        style: TextStyle(
+                          color: Colors.black38,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               );
