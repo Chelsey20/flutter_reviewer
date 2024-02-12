@@ -38,7 +38,7 @@ class _PortionState extends State<Portion> {
                     child: Center(
                       child: Text(
                         '$num',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black38,
                           fontSize: 16.0,
                         ),
