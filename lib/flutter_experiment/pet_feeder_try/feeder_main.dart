@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/history.dart';
+import '../portion.dart';
 import 'meal_plan.dart';
 
 class PetFeedingScreen extends StatefulWidget {
@@ -10,7 +11,7 @@ class PetFeedingScreen extends StatefulWidget {
 }
 
 class _PetFeedingScreenState extends State<PetFeedingScreen> {
-  final int portionNumber = 60;
+  // final int portionNumber = 60;
   //functions
   Widget header() {
     return Row(
@@ -70,8 +71,8 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
             },
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+        const Padding(
+          padding: EdgeInsets.only(left: 30.0, right: 30.0),
           child: Divider(thickness: 1.0, color: Colors.white),
         ),
         Padding(
@@ -106,49 +107,6 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
     );
   }
 
-  Widget portion() {
-    return Container(
-      margin: EdgeInsets.only(left: 40.0, right: 40.0),
-      child: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: portionNumber,
-            itemBuilder: (context, index) {
-              int num = index + 1;
-
-              return Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 50,
-                  height: 50,
-                  padding: const EdgeInsets.all(2.0),
-                  margin: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '$num',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            }),
-      ),
-    );
-  }
-
   Widget middleCircle() {
     return Container(
       width: 250.0,
@@ -172,6 +130,11 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image(
+              image: AssetImage('lib/assets/feeding_bowl.png'),
+              width: 40.0,
+              height: 40.0,
+            ),
             Text(
               'Standby',
               style: TextStyle(color: Colors.grey),
@@ -182,22 +145,22 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
     );
   }
 
-  Widget quickButton() {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.orange,
-        minimumSize: Size(150, 40),
-      ),
-      child: const Text(
-        'Quick',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 15.0,
-        ),
-      ),
-    );
-  }
+  // Widget quickButton() {
+  //   return ElevatedButton(
+  //     onPressed: () {},
+  //     style: ElevatedButton.styleFrom(
+  //       backgroundColor: Colors.orange,
+  //       minimumSize: Size(150, 40),
+  //     ),
+  //     child: const Text(
+  //       'Quick',
+  //       style: TextStyle(
+  //         color: Colors.white,
+  //         fontSize: 15.0,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -227,15 +190,7 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
               ),
             ),
             SizedBox(height: 30.0),
-            Flexible(child: portion()),
-            const Text(
-              'Portion',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 20.0,
-              ),
-            ),
-            quickButton(),
+            Flexible(child: Portion()),
           ],
         ),
       ),
