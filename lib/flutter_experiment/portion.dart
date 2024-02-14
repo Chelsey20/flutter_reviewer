@@ -9,6 +9,7 @@ class Portion extends StatefulWidget {
 
 class _PortionState extends State<Portion> {
   final int portionNumber = 60;
+  var _isClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class _PortionState extends State<Portion> {
         Container(
           margin: EdgeInsets.only(left: 40.0, right: 40.0),
           width: MediaQuery.sizeOf(context).width,
-          height: 100,
+          height: 70,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: portionNumber,
@@ -28,23 +29,29 @@ class _PortionState extends State<Portion> {
                 padding: const EdgeInsets.all(10.0),
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '$num',
-                        style: const TextStyle(
-                          color: Colors.black38,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: unPressed(num, _isClicked),
+                  // OutlinedButton(
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       _isClicked = true;
+                  //       //record num
+                  //     });
+                  //   },
+                  //   style: OutlinedButton.styleFrom(
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(20.0),
+                  //     ),
+                  //   ),
+                  //   child: Center(
+                  //     child: Text(
+                  //       '$num',
+                  //       style: const TextStyle(
+                  //         color: Colors.black38,
+                  //         fontSize: 16.0,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               );
             },
@@ -63,7 +70,7 @@ class _PortionState extends State<Portion> {
             minimumSize: Size(150, 40),
           ),
           child: const Text(
-            'Quick',
+            'Manual',
             style: TextStyle(
               color: Colors.white,
               fontSize: 15.0,
@@ -73,4 +80,28 @@ class _PortionState extends State<Portion> {
       ],
     );
   }
+}
+
+Widget unPressed(int num, var _isClicked) {
+  return OutlinedButton(
+    onPressed: () {
+      setState() {
+        _isClicked = true;
+      }
+    },
+    style: OutlinedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+    ),
+    child: Center(
+      child: Text(
+        '$num',
+        style: const TextStyle(
+          color: Colors.black38,
+          fontSize: 16.0,
+        ),
+      ),
+    ),
+  );
 }

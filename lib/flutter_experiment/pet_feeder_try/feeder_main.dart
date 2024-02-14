@@ -145,23 +145,6 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
     );
   }
 
-  // Widget quickButton() {
-  //   return ElevatedButton(
-  //     onPressed: () {},
-  //     style: ElevatedButton.styleFrom(
-  //       backgroundColor: Colors.orange,
-  //       minimumSize: Size(150, 40),
-  //     ),
-  //     child: const Text(
-  //       'Quick',
-  //       style: TextStyle(
-  //         color: Colors.white,
-  //         fontSize: 15.0,
-  //       ),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
