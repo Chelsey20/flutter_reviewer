@@ -153,7 +153,7 @@ class _PetFeedingScreenState extends State<PetFeedingScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(
-              flex: 4,
+              flex: 3,
               child: Container(
                 height: 500.0,
                 decoration: const BoxDecoration(
