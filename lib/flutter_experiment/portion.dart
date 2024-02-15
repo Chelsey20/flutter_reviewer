@@ -10,7 +10,8 @@ class Portion extends StatefulWidget {
 class _PortionState extends State<Portion> {
   final int portionNumber = 60;
   var _isClicked = false;
-  int selectedIndex = 0;
+  int selectedIndex = -1;
+  String selectedManualIndex = '';
 
   @override
   Widget build(BuildContext context) {
@@ -58,16 +59,20 @@ class _PortionState extends State<Portion> {
             },
           ),
         ),
-        SizedBox(height: 20.0),
-        const Text(
-          'Portion',
-          style: TextStyle(
-            color: Colors.grey,
-          ),
-        ),
-        SizedBox(height: 20.0),
+        // SizedBox(height: 20.0),
+        // // const Text(
+        // //   'Portion',
+        // //   style: TextStyle(
+        // //     color: Colors.grey,
+        // //   ),
+        // // ),
+        // SizedBox(height: 20.0),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              selectedManualIndex = selectedIndex as String;
+            });
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.orange,
             minimumSize: Size(150, 40),
@@ -79,36 +84,12 @@ class _PortionState extends State<Portion> {
               fontSize: 15.0,
             ),
           ),
-        )
+        ),
+        Text(
+          'what portion $selectedManualIndex,',
+          style: TextStyle(color: Colors.black),
+        ),
       ],
     );
   }
 }
-
-// Widget unPressed(int num, var _isClicked) {
-//   return SizedBox(
-//     width: 70,
-//     height: 50,
-//     child: OutlinedButton(
-//       onPressed: () {
-//         setState() {
-//           _isClicked = true;
-//         }
-//       },
-//       style: OutlinedButton.styleFrom(
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(15.0),
-//         ),
-//       ),
-//       child: Center(
-//         child: Text(
-//           '$num',
-//           style: const TextStyle(
-//             color: Colors.black38,
-//             fontSize: 16.0,
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
-// }
