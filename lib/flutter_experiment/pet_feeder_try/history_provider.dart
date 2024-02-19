@@ -4,15 +4,19 @@ class HistoryProvider extends ChangeNotifier {
   String record = '';
 
   HistoryProvider({
-    this.record = '',
+    this.record = 'Empty',
   });
 
-  Widget makeRecord(int index) {
-    return const ListTile(
-      title: Text('00001'),
-    );
+  void addText({
+    required String newRecord,
+  }) async {
+    record = newRecord;
+    notifyListeners();
   }
 
-  @override
-  notifyListeners();
+  // Widget makeRecord(int index) {
+  //   return Text('00001');
+  // }
+  // @override
+  // notifyListeners();
 }

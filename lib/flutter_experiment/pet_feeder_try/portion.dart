@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/history_provider.dart';
+import 'package:provider/provider.dart';
 
 class Portion extends StatefulWidget {
   const Portion({super.key});
@@ -70,8 +72,11 @@ class _PortionState extends State<Portion> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              selectedManualIndex = selectedIndex as String;
+              selectedManualIndex = selectedIndex.toString() as String;
             });
+            context
+                .read<HistoryProvider>()
+                .addText(newRecord: selectedManualIndex);
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.orange,
