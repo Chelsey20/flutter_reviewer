@@ -12,8 +12,8 @@ class Portion extends StatefulWidget {
 class _PortionState extends State<Portion> {
   final int portionNumber = 60;
   var _isClicked = false;
-  int selectedIndex = -1;
-  String selectedManualIndex = '';
+  int _selectedIndex = -1;
+  String _selectedIndexString = '';
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +28,17 @@ class _PortionState extends State<Portion> {
             itemCount: portionNumber,
             itemBuilder: (context, index) {
               int num = index + 1;
-
               return Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
                   padding: EdgeInsets.only(left: 20.0, right: 20.0),
                   child: Container(
-                    height: selectedIndex == index ? 70 : 60,
-                    width: selectedIndex == index ? 70 : 60,
+                    height: _selectedIndex == num ? 70 : 60,
+                    width: _selectedIndex == num ? 70 : 60,
                     child: OutlinedButton(
                       onPressed: () {
                         setState(() {
-                          selectedIndex = index;
+                          _selectedIndex = num;
                         });
                       },
                       style: OutlinedButton.styleFrom(
@@ -72,11 +71,13 @@ class _PortionState extends State<Portion> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              selectedManualIndex = selectedIndex.toString() as String;
+              //selectedManualIndex = selectedManualIndex.toString() as String;
+              _selectedIndexString = _selectedIndex.toString();
             });
             context
                 .read<HistoryProvider>()
-                .addText(newRecord: selectedManualIndex);
+                .makeRecord(newRecord: _selectedIndexString);
+            //Provider.of<HistoryProvider>(context, listen: false).makeRecord(newRecord: _selectedIndexString);
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.orange,
@@ -91,7 +92,7 @@ class _PortionState extends State<Portion> {
           ),
         ),
         Text(
-          'what portion $selectedManualIndex,',
+          'what portion $_selectedIndexString,',
           style: TextStyle(color: Colors.black),
         ),
       ],

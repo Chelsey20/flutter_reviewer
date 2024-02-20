@@ -7,16 +7,37 @@ class HistoryProvider extends ChangeNotifier {
     this.record = 'Empty',
   });
 
-  void addText({
-    required String newRecord,
-  }) async {
-    record = newRecord;
-    notifyListeners();
-  }
+  // void addText({
+  //   required String newRecord,
+  // }) async {
+  //   record = newRecord;
+  //   notifyListeners();
+  // }
 
-  // Widget makeRecord(int index) {
-  //   return Text('00001');
+  // Widget makeRecord(String newRecord) {
+  // return Column(
+  //   children: [
+  //     ListTile(
+  //       title: Text('$newRecord'),
+  //     ),
+  //   ],
+  // );
   // }
   // @override
   // notifyListeners();
+
+  Future<Widget> makeRecord({required String newRecord}) async {
+    record = newRecord;
+    notifyListeners();
+
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ListTile(
+            trailing: Icon(Icons.confirmation_num_sharp),
+            title: Text('$newRecord'),
+          )
+        ]);
+  }
 }
