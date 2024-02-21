@@ -1,37 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/feeder_main.dart';
-import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/history_provider.dart';
-import 'package:flutter_reviewer/flutter_experiment/pet_feeder_try/history.dart';
-import 'package:provider/provider.dart';
 
-void main() {
-  runApp(
-    // ignore: prefer_const_constructors
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (ctx) => HistoryProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Rojeco App',
-        home: const MyPetFeederApp(),
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-        ),
-      ),
-    ),
-  );
-}
-
-class MyPetFeederApp extends StatefulWidget {
-  const MyPetFeederApp({super.key});
+class HomeFeeder extends StatefulWidget {
+  const HomeFeeder({super.key});
 
   @override
-  State<MyPetFeederApp> createState() => _MyPetFeederAppState();
+  State<HomeFeeder> createState() => _HomeFeederState();
 }
 
-class _MyPetFeederAppState extends State<MyPetFeederApp> {
+class _HomeFeederState extends State<HomeFeeder> {
   int myIndex = 0;
 
   @override

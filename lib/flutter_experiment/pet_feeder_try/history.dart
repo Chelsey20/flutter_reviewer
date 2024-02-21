@@ -16,9 +16,11 @@ class _FeedRecordScreenState extends State<FeedRecordScreen> {
       appBar: AppBar(
         title: const Text('History'),
       ),
-      body: Text(
-        context.watch<HistoryProvider>().record,
-      ),
+      body: ListTile(
+          trailing: Icon(Icons.confirmation_num_sharp),
+          title: Text(
+            context.watch<HistoryProvider>().record,
+          )),
     );
   }
 }

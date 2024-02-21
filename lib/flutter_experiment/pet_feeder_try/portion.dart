@@ -60,14 +60,14 @@ class _PortionState extends State<Portion> {
             },
           ),
         ),
-        // SizedBox(height: 20.0),
-        // // const Text(
-        // //   'Portion',
-        // //   style: TextStyle(
-        // //     color: Colors.grey,
-        // //   ),
-        // // ),
-        // SizedBox(height: 20.0),
+        SizedBox(height: 20.0),
+        const Text(
+          'Portion',
+          style: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
+        SizedBox(height: 20.0),
         ElevatedButton(
           onPressed: () {
             setState(() {
@@ -90,10 +90,6 @@ class _PortionState extends State<Portion> {
               fontSize: 15.0,
             ),
           ),
-        ),
-        Text(
-          'what portion $_selectedIndexString,',
-          style: TextStyle(color: Colors.black),
         ),
       ],
     );
