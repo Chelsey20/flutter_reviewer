@@ -1,92 +1,102 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('ListView.builder Example'),
-        ),
-        body: ButtonListView(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: MyHomePage(),
     );
   }
 }
 
-class ButtonListView extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
-  _ButtonListViewState createState() => _ButtonListViewState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _ButtonListViewState extends State<ButtonListView> {
-  int selectedIndex = -1;
+class _MyHomePageState extends State<MyHomePage> {
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            height: 200,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 20,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = index;
-                              });
-                            },
-                            child: Container(
-                              width: selectedIndex == index ? 100.0 : 50.0,
-                              height: selectedIndex == index ? 100.0 : 50.0,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // Add your button onPressed logic here
-                                },
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                                child: Text(
-                                    '$index'), // Displaying index instead of 'Item $index'
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            // Add your button onPressed logic here
-          },
-          child: Text('Manual'),
-        ),
+    return Scaffold(
+        body: ListView(
+      children: <Widget>[
+        Tile(text: Text("a")),
+        Tile(text: Text("b")),
+        Tile(text: Text("c")),
       ],
+    ));
+  }
+}
+
+int count = 0;
+List<History> historyList = [];
+
+class History {
+  String data;
+  DateTime dateTime;
+
+  History({required this.data, required this.dateTime});
+}
+
+class Tile extends StatefulWidget {
+  final Text text;
+  Tile({required this.text});
+
+  @override
+  TileState createState() => TileState();
+}
+
+class TileState extends State<Tile> {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: widget.text,
+      onTap: () {
+        count++;
+        print(count);
+        historyList
+            .add(History(data: widget.text.data, dateTime: DateTime.now()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HistoryPage(),
+            ));
+      },
+    );
+  }
+}
+
+class HistoryPage extends StatefulWidget {
+  @override
+  HistoryPageState createState() => HistoryPageState();
+}
+
+class HistoryPageState extends State<HistoryPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              })),
+      body: ListView.builder(
+        itemCount: historyList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text(
+                ' ${historyList[index].data}   ${historyList[index].dateTime.toString()}'),
+          );
+        },
+      ),
     );
   }
 }
