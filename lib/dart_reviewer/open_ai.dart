@@ -39,7 +39,7 @@ int count = 0;
 List<History> historyList = [];
 
 class History {
-  String data;
+  String? data;
   DateTime dateTime;
 
   History({required this.data, required this.dateTime});
